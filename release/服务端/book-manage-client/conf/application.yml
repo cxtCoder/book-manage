@@ -1,0 +1,25 @@
+server:
+  servlet:
+    context-path: /bookManage
+app:
+  name: book-manage-client
+  server:
+    port: 9088
+  deploy:
+    version: 1.0
+
+rpc:
+  consumer:
+    connectTimeout: 600000
+    timeout: 600000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:29090/eureka/
+
+swagger:
+  base-package: pers.cxt.bms.server.client.controller
+  title: Book-Manage
+  description: API接口描述
+  version: 1.0

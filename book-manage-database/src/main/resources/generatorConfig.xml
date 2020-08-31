@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlTable" targetRuntime="mybatis3" defaultModelType="flat">
+        <!-- 生成的Java文件的編碼 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代碼 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+
+        <!-- 数据库关键字冲突,自动处理 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- 用反引号`包裹,默认是双引号"-->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="ignoreFields" value="id,enabled,create_time,createBy,lastUpdateBy,lastUpdateTime,description"/>
+
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+        <!--<plugin type="org.mybatis.generator.plugins.OverIsMergeablePlugin">-->
+        <!--<property name="isMergeable" value="false"/>-->
+        <!--</plugin>-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>-->
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.LombokPlugin">-->
+        <!--<property name="ignoreFields" value="id,enabled,createTime,createBy,lastUpdateBy,lastUpdateTime"/>-->
+        <!--</plugin>-->
+
+        <!--<commentGenerator type="org.mybatis.generator.internal.MyCommentGenerator">-->
+        <!--<property name="author" value="mengjq@hundsun.com"/>-->
+        <!--<property name="suppressAllComments" value="false"/>-->
+        <!--<property name="suppressDate" value="true"/>-->
+        <!--<property name="addRemarkComments" value="true"/>-->
+        <!--</commentGenerator>-->
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+            <property name="useInformationSchema" value="true"></property>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/book_manage?serverTimezone=UTC"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- generate Model -->
+        <javaModelGenerator targetPackage="pers.cxt.bms.database.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+            <!--<property name="immutable" value="false"/>-->
+        </javaModelGenerator>
+
+        <javaClientGenerator type="ANNOTATEDMAPPER"
+                             targetPackage="pers.cxt.bms.database.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="addMapperAnnotation" value="true"/>
+        </javaClientGenerator>
+
+        <!--*********************基础信息**************************************-->
+        <table tableName="BM_User" domainObjectName="BmUser"/>
+        <table tableName="BM_Book" domainObjectName="BmBook"/>
+        <table tableName="BM_User_Type" domainObjectName="BmUserType"/>
+        <table tableName="BM_Classify" domainObjectName="BmClassify"/>
+        <table tableName="BM_Content" domainObjectName="BmContent"/>
+    </context>
+</generatorConfiguration>
