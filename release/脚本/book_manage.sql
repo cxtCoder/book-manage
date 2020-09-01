@@ -68,7 +68,7 @@ CREATE TABLE `bm_content` (
   `level` int(10) NOT NULL COMMENT '层级',
   `author` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '作者',
   `start_page` int(100) NOT NULL COMMENT '起始页',
-  `description` varchar(10000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '描述',
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '描述',
   `book_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '图书ID',
   PRIMARY KEY (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='图书目录表';

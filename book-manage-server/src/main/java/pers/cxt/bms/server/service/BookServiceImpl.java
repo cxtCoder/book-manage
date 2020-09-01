@@ -6,6 +6,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import pers.cxt.bms.api.bo.BookContentBO;
 import pers.cxt.bms.api.bo.BookSummaryBO;
 import pers.cxt.bms.api.bo.SummaryBO;
@@ -40,6 +42,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @CloudComponent
+@Transactional(rollbackFor = Exception.class)
 public class BookServiceImpl implements BookService {
 
     @Autowired
@@ -145,6 +148,7 @@ public class BookServiceImpl implements BookService {
             contentService.saveBookContent(book.getBookId(), bookDTO.getContentData());
         } catch (Exception e) {
             log.error("保存图书信息失败", e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return false;
         }
         return true;
@@ -203,6 +207,7 @@ public class BookServiceImpl implements BookService {
             contentService.deleteBookContent(selectedIds);
         } catch (Exception e) {
             log.error("通过图书ID删除图书信息失败", e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return false;
         }
         return true;
