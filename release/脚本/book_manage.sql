@@ -26,7 +26,7 @@ CREATE TABLE `bm_book` (
   `author` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '作者',
   `publishing` varchar(500) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '出版社',
   `published_date` datetime NOT NULL COMMENT '出版日期',
-  `summary` varchar(5000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '简介',
+  `summary` text CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '简介',
   `remarks` varchar(10000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '备注',
   `classify_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '类别ID',
   `classify` varchar(25) NOT NULL COMMENT '类别',
